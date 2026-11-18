@@ -1,0 +1,162 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --imd-bg: #F7F7F8;
+  --imd-surface: #FFFFFF;
+  --imd-subtle: #ECECF1;
+  --imd-hover: #F2F2F5;
+  --imd-field-fill: #EEF1EE;
+  --imd-panel-fill: #F7FAF8;
+  --imd-toolbar-fill: #F2F7F5;
+
+  --imd-line: #E3E3E8;
+  --imd-line-strong: #D1D1DB;
+  --imd-table-head: #FAFAFB;
+  --imd-table-row-line: #EFEFF3;
+
+  --imd-text: #202123;
+  --imd-text2: #343541;
+  --imd-muted: #5B5E6B;
+  --imd-faint: #68687B;
+
+  --imd-accent: #047857;
+  --imd-accent-hover: #065F46;
+  --imd-accent-soft: #ECFDF5;
+  --imd-ring: rgba(4, 120, 87, 0.22);
+  --imd-on-accent: #FFFFFF;
+
+  --imd-success: #067647;
+  --imd-success-soft: #DCFAE6;
+  --imd-danger: #B42318;
+  --imd-danger-soft: #FEE4E2;
+  --imd-warn: #B54708;
+  --imd-warn-soft: #FEF0C7;
+  --imd-info: #175CD3;
+  --imd-info-soft: #EFF4FF;
+
+  --imd-side: #0B3D3A;
+  --imd-side2: #104A46;
+  --imd-side-hover: #155A55;
+  --imd-side-active: #1A6A63;
+  --imd-side-text: #F0FDFA;
+  --imd-side-muted: #9CCFC7;
+  --imd-side-border: #1F665F;
+  --imd-side-line: #17524D;
+
+  --imd-note-bg: #FFFAEB;
+  --imd-note-border: #FEDF89;
+  --imd-note-text: #7A2E0E;
+
+  --imd-orange: #F39C12;
+  --imd-orange-hover: #E08E0B;
+  --imd-on-orange: #2B1A00;
+
+  --imd-radius: 10px;
+  --imd-radius-sm: 6px;
+  --imd-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+  --imd-font: "IBM Plex Sans Arabic", system-ui, sans-serif;
+  --imd-font-print: "Amiri", "IBM Plex Sans Arabic", serif;
+
+  /* Android APK Native Touch Sizing Defaults */
+  --imd-control-h: 46px;
+  --imd-topbar-h: 56px;
+  --imd-statusbar-h: 0px;
+  --imd-cell-pad-v: 10px;
+}
+
+html {
+  --imd-control-h: 46px;
+  --imd-topbar-h: 56px;
+  --imd-statusbar-h: 0px;
+  --imd-cell-pad-v: 10px;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--imd-bg);
+  color: var(--imd-text);
+  font-family: var(--imd-font);
+  font-feature-settings: "tnum" 1;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.imd-control-height {
+  height: var(--imd-control-h);
+  min-height: var(--imd-control-h);
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.font-mono-num {
+  font-family: "IBM Plex Mono", var(--imd-font);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Slim touch scrollbars on Android APK */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--imd-line-strong);
+  border-radius: 9999px;
+}
+
+/* Safe area support for Android APK notches & gesture navigation bars */
+.imd-safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Focus visibility */
+:focus-visible {
+  outline: 2px solid var(--imd-accent);
+  outline-offset: 1px;
+}
+
+::selection {
+  background-color: var(--imd-accent-soft);
+  color: var(--imd-accent);
+}
+
+@keyframes imdFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.imd-fade-in {
+  animation: imdFadeIn 160ms ease-out;
+}
+
+@media print {
+  body {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
